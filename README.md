@@ -7,8 +7,8 @@ Blocked visitors can be redirected to a specific url or have a strict 403 HTTP e
 ### Features
 - Allow / disallow specifi countries (allowed countries overwrites disallowed countries restrictions)
 - Allow / disallow a list of IPs (Allowed IPs overwrites countries restrictions)
-- Redirect restricted access to a specific url or send a 403 HTTT Error
-- A file to allow or disallow IPs can be added into your Magento installation under the `media` folder and configuration into the module configuraion page
+- Redirect restricted access to a specific url or send a 403 HTTP Error
+- A file to allow or disallow IPs can be added into your Magento installation under the `media` folder and configured through the configuration page of the module
 - Specific User Agents like GoogleBot can be allowed to get through the restriction
 
 ## Installation
