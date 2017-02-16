@@ -232,7 +232,7 @@ class Diglin_Geoip_Helper_Data extends Mage_Core_Helper_Abstract
             $toRestrict = true;
         }
 
-        return ($toRestrict) ? $this->_getRestrictionsUrl() : false;
+        return ($toRestrict) ? $this->_getRestrictionsUrl() : ((in_array($ip, $allowedIps)) ? true : false);
     }
 
     /**

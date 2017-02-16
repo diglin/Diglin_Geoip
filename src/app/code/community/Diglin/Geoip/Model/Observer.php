@@ -78,11 +78,11 @@ class Diglin_Geoip_Model_Observer
 
         $redirection = $helper->getUserUrlRedirectionByIp();
 
-        if (!$redirection) {
+        if ($redirection === false) {
             $redirection = $helper->getUserUrlRedirectionByCountry();
         }
 
-        if (!$redirection || $helper->isBot()) {
+        if (is_bool($redirection) || $helper->isBot()) {
             return;
         }
 
