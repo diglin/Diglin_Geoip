@@ -1,0 +1,4 @@
+src/app/code/community/Diglin/Geoip app/code/community/Diglin/Geoip
+src/app/etc/modules/Diglin_Geoip.xml app/etc/modules/Diglin_Geoip.xml
+src/lib/Diglin/MaxMind lib/Diglin/MaxMind
+src/lib/Diglin/GeoIp2 lib/Diglin/GeoIp2

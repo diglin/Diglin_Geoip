@@ -1,0 +1,89 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Diglin GmbH - Switzerland
+ *
+ * @author      Sylvain Rayé <support at diglin.com>
+ * @category    Diglin
+ * @package     Diglin_Geoip
+ * @copyright   Copyright (c) 2011-2017 Diglin (http://www.diglin.com)
+ */-->
+<config>
+    <modules>
+        <Diglin_Geoip>
+            <version>1.0.0</version>
+        </Diglin_Geoip>
+    </modules>
+
+    <default>
+        <diglin_geoip>
+            <general>
+                <enabled>0</enabled>
+                <user_agent><![CDATA[bot|crawl|slurp|spider|facebookexternalhit|facebot|facebook|Mediapartners-Google]]></user_agent>
+                <maxmind_type>free</maxmind_type>
+                <maxmind_userid />
+                <maxmind_license />
+            </general>
+        </diglin_geoip>
+    </default>
+
+    <global>
+        <psr0_namespaces>
+            <!-- Required to load the GeoIp2 PHP library -->
+            <Diglin_GeoIp2/>
+            <Diglin_MaxMind/>
+        </psr0_namespaces>
+
+        <models>
+            <diglin_geoip>
+                <class>Diglin_Geoip_Model</class>
+                <resourceModel>diglin_geoip_resource</resourceModel>
+            </diglin_geoip>
+            <diglin_geoip_resource>
+                <class>Diglin_Geoip_Model_Resource</class>
+            </diglin_geoip_resource>
+        </models>
+
+        <helpers>
+            <diglin_geoip>
+                <class>Diglin_Geoip_Helper</class>
+            </diglin_geoip>
+        </helpers>
+
+        <events>
+            <resource_get_tablename>
+                <observers>
+                    <diglin_geoip>
+                        <type>singleton</type>
+                        <class>diglin_geoip/observer</class>
+                        <method>addAutoloader</method>
+                    </diglin_geoip>
+                </observers>
+            </resource_get_tablename>
+
+            <add_spl_autoloader>
+                <observers>
+                    <diglin_geoip>
+                        <type>singleton</type>
+                        <class>diglin_geoip/observer</class>
+                        <method>addAutoloader</method>
+                    </diglin_geoip>
+                </observers>
+            </add_spl_autoloader>
+        </events>
+    </global>
+
+    <frontend>
+        <events>
+            <controller_action_predispatch>
+                <observers>
+                    <diglin_geoip_observer>
+                        <type>singleton</type>
+                        <class>diglin_geoip/observer</class>
+                        <method>controllerActionPredispatch</method>
+                    </diglin_geoip_observer>
+                </observers>
+            </controller_action_predispatch>
+        </events>
+    </frontend>
+</config>
